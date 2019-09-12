@@ -7,5 +7,38 @@ export const initialState = {
     ] }
 
 export const reducer = (state, action) => {
-    return state;
-}
+    if(action.type === "ADD TODO") {
+        return {
+            ...state, 
+            todoList: [...state.todoList, {
+                item: action.payload,
+                completed: false,
+                id: Date.now()
+            }]
+        }
+    } else if (action.type === "CLEAR TODO"){
+        return {
+            ...state,
+            todoList: state.todoList.filter(todo => !todo.completed)
+        };
+
+    }else if (action.type === "TOGGLE COMPLETED"){
+            return {
+                ...state,
+                todoList: state.todoList.map(todo => {
+                   if(todo.id === action.payload) {
+                       return {
+                           ...todo,
+                           completed: !todo.completed
+                       };
+                    }
+                       else {
+                           return todo;
+                       }
+                   })
+                    
+                    
+            };  
+
+        }
+    }

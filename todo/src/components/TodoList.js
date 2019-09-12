@@ -2,7 +2,7 @@ import React, {useReducer} from "react";
 
 
 
-const TodoList = ({list}) => {
+function TodoList({list, toggleCompleted}){
     
 
   
@@ -10,7 +10,8 @@ const TodoList = ({list}) => {
   return (
       <div>
             {list.map(todo => 
-            <div>
+            <div key = {todo.id} onClick = {() => toggleCompleted (todo.id)}
+                    className = {todo.completed ? "completed" : "not-completed"}>
                 {todo.item}
                 </div>
             )}
