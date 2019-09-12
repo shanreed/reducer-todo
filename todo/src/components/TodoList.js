@@ -1,16 +1,23 @@
-import React from "react";
+import React, {useReducer} from "react";
 
 
 
-const TodoList = () => {
+const TodoList = ({list}) => {
+    
 
   
 
   return (
-      <>
-      </>
+      <div>
+            {list.map(todo => 
+            <div>
+                {todo.item}
+                </div>
+            )}
+
+      </div>
     
-  );
+  )
 };
 
 export default TodoList;
